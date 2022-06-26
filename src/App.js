@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
+import Footer from "./components/Footer/Footer";
+import Form from "./components/Form/Form";
+import Header from './components/Header/Header';
+import IncomingMoviesList from "./views/Movies/MoviesLists/IncomingMoviesList";
+import PopularMoviesList from "./views/Movies/MoviesLists/PopularMoviesList";
 
-function App() {
+const App = () => {
+
+  const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header movies={movies} setMovies={setMovies} search={search} setSearch={setSearch} />
+      <PopularMoviesList movies={movies} setMovies={setMovies} />
+      <IncomingMoviesList />
+      <Form />
+      <Footer />
+    </>
   );
 }
 
